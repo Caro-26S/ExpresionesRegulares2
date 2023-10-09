@@ -10,6 +10,7 @@ public class Persona {
     private String Nacionalidad;
     private String Correo;
     private String Contraseña;
+    private boolean Cant;
 
     public Persona(String Nombre, String Apellido, String Tipo, String Documento, String Lugar, String Nacionalidad, String Correo, String Contraseña) {
         this.Nombre = Nombre;
@@ -20,8 +21,9 @@ public class Persona {
         this.Nacionalidad = Nacionalidad;
         this.Correo = Correo;
         this.Contraseña = Contraseña;
+        this.Cant = false;
     }
-    
+
     public Persona() {
         this.Nombre = "";
         this.Apellido = "";
@@ -31,6 +33,7 @@ public class Persona {
         this.Nacionalidad = "";
         this.Correo = "";
         this.Contraseña = "";
+        this.Cant = false;
     }
 
     public String getNombre() {
@@ -97,6 +100,12 @@ public class Persona {
         this.Contraseña = Contraseña;
     }
 
-    
-    
+    public boolean isCant() {
+        return Cant;
+    }
+
+    public void setCant(boolean Cant) {
+        this.Cant = Cant;
+    }
+
 }

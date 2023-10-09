@@ -7,10 +7,15 @@ import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 public class IngresoDatos {
+
+    public IngresoDatos() {
+    }
     
-    public static ArrayList<Persona> ArrayPersonas= new ArrayList<>();
     
-    public static void Ingresar(){
+    
+    public ArrayList<Persona> ArrayPersonas= new ArrayList<>();
+    
+    public void Ingresar(){
         Persona Registro = new Persona();
         
         String Nombre = Nombre();
@@ -31,8 +36,7 @@ public class IngresoDatos {
         String Nacionalidad = Nacionalidad();
         Registro.setNacionalidad(Nacionalidad);
 
-        String Correo = Correo();
-        Registro.setCorreo(Correo);
+        Registro = Correo(Registro);
 
         String Contraseña = Contraseña();
         Registro.setContraseña(Contraseña);
@@ -78,7 +82,7 @@ public class IngresoDatos {
     
     static String TipoDocumento(){
         Object S = "";
-        String Vector[] = {"Cédula de Cuidadania","Cédula de Extranjeria","Pasaporte"};
+        String Vector[] = {"Cédula de Ciudadania","Cédula de Extranjeria","Pasaporte"};
         
         S = JOptionPane.showInputDialog(null,"Seleccione tipo de documento", "ELEGIR", JOptionPane.QUESTION_MESSAGE,null,Vector, Vector[0]);
         String Tipo = S.toString();
@@ -114,6 +118,12 @@ public class IngresoDatos {
         return Lugar;
     }
     
+    static String Celular(){
+        String Celular = "";
+        
+        return Celular;
+    }
+    
     static String Nacionalidad(){
         Object S = "";
         
@@ -125,7 +135,7 @@ public class IngresoDatos {
         return Nacionalidad;
     }
     
-    static String Correo(){
+    static Persona Correo(Persona P){
         String Correo = "";
         Pattern ValidarCorreo = Pattern.compile("[a-zA-Z0-9._]+@[a-zA-Z]+\\.[a-zA-Z]{2,5}");
         boolean Cumple = false;
@@ -141,17 +151,18 @@ public class IngresoDatos {
 
                     if(!Correo.equals(ConfirmarCorreo)){
                         JOptionPane.showMessageDialog(null, "El correo no coincide.");
+                        P.setCant(true);
                     }else{
                         Cumple = true;
+                        P.setCorreo(Correo);
                     }
                 }
-                
             }else{
                 JOptionPane.showMessageDialog(null, "Correo mal ingresado.");
             }
         }
         
-        return Correo;
+        return P;
     }
     
     static String Contraseña(){
